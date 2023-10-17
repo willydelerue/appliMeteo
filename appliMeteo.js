@@ -1,5 +1,18 @@
 let ville = "Paris";
+recevoirTemperature(ville);
 
+
+let changerDeVille = document.querySelector('#changer');
+changerDeVille.addEventListener('click', () => {
+    
+    ville = prompt("Veuillez entrer votre nom de ville.");
+    recevoirTemperature(ville);
+});
+
+
+
+function recevoirTemperature() {
+    
 const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=da7b3605119c1f7d42a31bc148149844&units=metric';
 
 let requete = new XMLHttpRequest();
@@ -15,6 +28,8 @@ requete.onload = function() {
         let temperature = reponse.main.temp;
         let ville       = reponse.name;
 
+        
+
         document.querySelector('#temperature_label').textContent = temperature;
         document.querySelector('#ville').textContent = ville;
         console.log(reponse);
@@ -23,4 +38,5 @@ requete.onload = function() {
     else {
             alert('Un problème est intervenu, merci de revenir plus tard.');
     }
+}
 }
