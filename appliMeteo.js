@@ -32,7 +32,8 @@ if("geolocation" in navigator) {
       }, error, options);
 
       function error() {
-        alert('Aucune position disponible.');
+        ville = "Paris";
+        recevoirTemperature(ville);
       }
 
       var options = {
