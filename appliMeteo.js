@@ -1,5 +1,25 @@
-let ville = "Paris";
-recevoirTemperature(ville);
+let ville;
+
+if("geolocation" in navigator) {
+    navigator.geolocation.watchPosition((position) => {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+      }, error, options);
+
+      function error() {
+        alert('Aucune position disponible.');
+      }
+
+      var options = {
+        enableHighAccuracy: true,  // false par defaut
+        maximumAge        : 30000, // dernière position en cache en millisecondes qu'on peut accepter, 0 par defaut
+        timeout           : 27000  // durée max en millisecondes pour geolocaliser, infinity par defaut
+      }
+
+} else {
+    ville = "Paris";
+    recevoirTemperature(ville);
+}
 
 
 let changerDeVille = document.querySelector('#changer');
